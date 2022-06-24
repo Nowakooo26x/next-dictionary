@@ -1,13 +1,15 @@
 import React from "react";
-import { useGetWordsQuery } from "redux/services/dictionaryAPI";
-import { Typography } from "@mui/material";
+
 import Layout from "components/Layout/Layout";
 import MyTable from "components/Table/MyTable";
 
 import ButtonAddFavourite from "components/favourite/ButtonAddFavourite";
 
-export default function Home() {
-  const { data, error, isLoading, isFetching } = useGetWordsQuery();
+import { useGetRandomWordsQuery } from "redux/services/dictionaryAPI";
+import { Typography } from "@mui/material";
+
+export default function Random() {
+  const { data, error, isLoading, isFetching } = useGetRandomWordsQuery();
 
   const columns = [
     { id: "0", label: "English", minWidth: 120, align: "left" },
@@ -25,7 +27,16 @@ export default function Home() {
 
   return (
     <Layout>
-      { isFetching ? "loading..." : <MyTable columns={columns} data={data} rowRecords={rowRecords} /> }
+      <Typography variant="h3">Random</Typography>
+      {isFetching ? (
+        "loading..."
+      ) : (
+        <>
+          {/*<Sort/>
+          <SortLetter/>*/}
+          <MyTable columns={columns} data={data} rowRecords={rowRecords}/>
+        </>
+      )}
     </Layout>
   );
 }
