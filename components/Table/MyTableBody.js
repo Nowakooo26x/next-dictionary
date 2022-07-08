@@ -14,26 +14,21 @@ import AudioCell from "components/Table/ItemsTableCell/AudioCell";
 import LevelCell from "components/Table/ItemsTableCell/LevelCell";
 
 function MyTableBody({ data, page, rowsPerPage, rowRecords }) {
-  console.log(`data1`);
-  console.log(data);
-  console.log(page);
-  console.log(rowsPerPage);
   return (
     <TableBody>
       {data
         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
         .map((row) => {
-          console.log(row);
           return (
             <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-              <EnglishCell link={row.url_definition}>{row.english}</EnglishCell>
-              <TypeCell>{row.type}</TypeCell>
-              <PolishCell>{row.polish}</PolishCell>
               <AudioCell link={row.url_audion_1}></AudioCell>
               <AudioCell link={row.url_audion_2}></AudioCell>
+              <EnglishCell link={row.url_definition}>{row.english}</EnglishCell>
+              <TypeCell>{row.type}</TypeCell>
+              <PolishCell>{row.polish}</PolishCell>  
               <LevelCell>{row.level}</LevelCell>
               {rowRecords.map((item) => (
-                <TableCell align="right">{item.funComponent(row.id)}</TableCell>
+                <TableCell key={item} align="right">{item.funComponent(row.id)}</TableCell>
               ))}
             </TableRow>
           );

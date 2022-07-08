@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import Layout from "components/Layout/Layout";
 import StudyTable from "components/study/StudyTable";
 import { useGetStudyWordsQuery } from "redux/services/dictionaryAPI";
+import Loading from "components/Loading"
 
 function Study() {
   const { data, error, isLoading, isFetching } = useGetStudyWordsQuery();
@@ -22,7 +23,7 @@ function Study() {
   return (
     <Layout>
       <Typography variant="h3">Study</Typography>
-      {isFetching ? "loading..." : <StudyTable data={data} columns={columns} />}
+      {isFetching ? <Loading/> : <StudyTable data={data} columns={columns} />}
     </Layout>
   );
 }

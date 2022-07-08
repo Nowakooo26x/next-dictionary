@@ -42,16 +42,18 @@ export const dictionaryAPI = createApi({
     getStudyWords: builder.query({
       query: () => `/word/study/`,
     }),
+    getLessonWords: builder.query({
+      query: () => `/word/lesson/`,
+    }),
   }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const {
   useGetFavouriteWordsQuery,
   useGetWordByIDQuery,
   useGetWordsQuery,
   useGetRandomWordsQuery,
+  useGetLessonWordsQuery,
   useAddFavouriteWordQuery,
   usePostAddFavouriteWordMutation,
   useDeleteFavouriteWordMutation,
